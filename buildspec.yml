@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - echo Executing cloudformation templates
-      - aws cloudformation package --template-file file://$PWD/infra/vpc.yml --stack-name vpc
+     # - aws cloudformation package --template-file file://$PWD/infra/vpc.yml --stack-name vpc
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
