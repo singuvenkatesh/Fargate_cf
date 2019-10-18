@@ -7,9 +7,9 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - aws cloudformation create-stack --template-body file://$PWD/infra/vpc.yml --stack-name vpc
+      - $(aws cloudformation create-stack --template-body file://$PWD/infra/vpc.yml --stack-name vpc)
 
-      - aws cloudformation create-stack --template-body file://$PWD/infra/iam.yml --stack-name iam --capabilities CAPABILITY_IAM
+      - $(aws cloudformation create-stack --template-body file://$PWD/infra/iam.yml --stack-name iam --capabilities CAPABILITY_IAM)
 
       - aws cloudformation create-stack --template-body file://$PWD/infra/app-cluster.yml --stack-name app-cluster
 
