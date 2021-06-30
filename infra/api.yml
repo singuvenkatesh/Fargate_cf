@@ -15,7 +15,7 @@ Resources:
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
         - Name: booksapi
-          Image: 968350853817.dkr.ecr.us-east-2.amazonaws.com/qauto_cf
+          Image: 968350853817.dkr.ecr.us-east-1.amazonaws.com/ecsapplication
           Cpu: 256
           Memory: 512
           PortMappings:
