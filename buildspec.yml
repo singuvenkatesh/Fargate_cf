@@ -5,6 +5,9 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - yum install -y yum-utils
+      - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - yum -y install terraform
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       #- aws cloudformation create-stack --template-body file://$PWD/infra/vpc.yml --stack-name vpc
@@ -12,10 +15,6 @@ phases:
       #- aws cloudformation create-stack --template-body file://$PWD/infra/iam.yml --stack-name iam --capabilities CAPABILITY_IAM
 
       #- aws cloudformation create-stack --template-body file://$PWD/infra/app-cluster.yml --stack-name app-cluster
-      - wget https://releases.hashicorp.com/terraform/0.10.4/terraform_0.10.4_linux_amd64.zip
-      - unzip terraform_0.10.4_linux_amd64.zip
-      - mv terraform /bin
-      - rm terraform_0.10.4_linux_amd64.zip
       - cd infra
       - terraform init
       - terraform apply
