@@ -16,7 +16,7 @@ phases:
 # Edit the api.yml to update Image tag/URL under Task > ContainerDefinitions and,
       - aws cloudformation create-stack --template-body file://$PWD/infra/api.yml --stack-name api
       
-      - REPOSITORY_URI=968350853817.dkr.ecr.us-east-2.amazonaws.com/qauto_cf
+      - REPOSITORY_URI=968350853817.dkr.ecr.us-east-1.amazonaws.com/ecsapplication
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
