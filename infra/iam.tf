@@ -19,7 +19,7 @@ EOF
 }
 
 resource "aws_iam_role" "ecs_task_role" {
-  name = "role-name-task-ecs"
+  name = "role-name-task-ecs-1"
  
   assume_role_policy = <<EOF
 {
