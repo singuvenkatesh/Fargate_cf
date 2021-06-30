@@ -17,7 +17,7 @@ phases:
       #- aws cloudformation create-stack --template-body file://$PWD/infra/app-cluster.yml --stack-name app-cluster
       - cd infra
       - terraform init
-      - terraform apply
+      - terraform apply --auto-approve
 
 # Edit the api.yml to update Image tag/URL under Task > ContainerDefinitions and,
       #- aws cloudformation create-stack --template-body file://$PWD/infra/api.yml --stack-name api
