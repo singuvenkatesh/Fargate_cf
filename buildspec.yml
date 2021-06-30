@@ -7,14 +7,14 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      #- aws cloudformation create-stack --template-body file://$PWD/infra/vpc.yml --stack-name vpc
+      - aws cloudformation create-stack --template-body file://$PWD/infra/vpc.yml --stack-name vpc
 
-      #- aws cloudformation create-stack --template-body file://$PWD/infra/iam.yml --stack-name iam --capabilities CAPABILITY_IAM
+      - aws cloudformation create-stack --template-body file://$PWD/infra/iam.yml --stack-name iam --capabilities CAPABILITY_IAM
 
-      #- aws cloudformation create-stack --template-body file://$PWD/infra/app-cluster.yml --stack-name app-cluster
+      - aws cloudformation create-stack --template-body file://$PWD/infra/app-cluster.yml --stack-name app-cluster
 
 # Edit the api.yml to update Image tag/URL under Task > ContainerDefinitions and,
-      #- aws cloudformation create-stack --template-body file://$PWD/infra/api.yml --stack-name api
+      - aws cloudformation create-stack --template-body file://$PWD/infra/api.yml --stack-name api
       
       - REPOSITORY_URI=968350853817.dkr.ecr.us-east-2.amazonaws.com/qauto_cf
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
